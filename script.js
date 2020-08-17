@@ -15,6 +15,7 @@ function getResults(value) {
     fetch(`https://api.lyrics.ovh/suggest/${value}`)
         .then(response => response.json())
         .then(songs => displayResult(songs))
+        document.getElementById("searchArea").value = "";
 }
 // Display result function
 function displayResult(songs) {
@@ -57,9 +58,11 @@ function getLyrics(artist, title) {
                             <pre class="lyric text-white">${currentLyric}</pre>`
             displayArea.innerHTML = lyric;
         })
+const displayArea = document.getElementById("lyricsArea");
+displayArea.style.display = "block";
 }
 // remove lyrics
 function hide() {
     const displayArea = document.getElementById("lyricsArea");
-    displayArea.remove();
+    displayArea.style.display = "none";
 }
